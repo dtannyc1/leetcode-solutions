@@ -5,11 +5,10 @@
  * @return {number}
  */
 var vowelStrings = function(words, left, right) {
-    let vowels = ['a', 'e', 'i', 'o', 'u'];
     let count = 0;
     for (let ii = left; ii <= right; ii++) {
-        if (vowels.some(vl => vl === words[ii].charAt(0)) 
-            && vowels.some(vl => vl === words[ii].charAt(words[ii].length-1))) {
+        if (['a', 'e', 'i', 'o', 'u'].some(vl => vl === words[ii].charAt(0)) 
+            && ['a', 'e', 'i', 'o', 'u'].some(vl => vl === words[ii].charAt(words[ii].length-1))) {
                 count += 1;
             }
     }
