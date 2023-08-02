@@ -46,11 +46,11 @@ FrontMiddleBackQueue.prototype.popFront = function() {
  */
 FrontMiddleBackQueue.prototype.popMiddle = function() {
     if (this.queue.length > 0) {
-        if (this.queue.length === 1) {
-            let val = this.queue[0];
-            this.queue = [];
-            return val;
-        }
+        // if (this.queue.length === 1) {
+        //     let val = this.queue[0];
+        //     this.queue = [];
+        //     return val;
+        // }
         let middleIdx = Math.floor((this.queue.length-1)/2);
         // let val = this.queue[middleIdx];
         // let tmpArr = this.queue.slice(0, middleIdx);
