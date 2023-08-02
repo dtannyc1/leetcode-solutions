@@ -16,9 +16,10 @@ FrontMiddleBackQueue.prototype.pushFront = function(val) {
  */
 FrontMiddleBackQueue.prototype.pushMiddle = function(val) {
     let middleIdx = Math.floor(this.queue.length/2);
-    let tmpArr = this.queue.slice(0, middleIdx);
-    tmpArr.push(val);
-    this.queue = tmpArr.concat(this.queue.slice(middleIdx));
+    // let tmpArr = this.queue.slice(0, middleIdx);
+    // tmpArr.push(val);
+    // this.queue = tmpArr.concat(this.queue.slice(middleIdx));
+    this.queue.splice(middleIdx, 0, val);
 };
 
 /** 
@@ -33,7 +34,6 @@ FrontMiddleBackQueue.prototype.pushBack = function(val) {
  * @return {number}
  */
 FrontMiddleBackQueue.prototype.popFront = function() {
-    console.log(this.queue)
     if (this.queue.length > 0) {
         return this.queue.shift();
     } else {
@@ -45,7 +45,6 @@ FrontMiddleBackQueue.prototype.popFront = function() {
  * @return {number}
  */
 FrontMiddleBackQueue.prototype.popMiddle = function() {
-    console.log(this.queue)
     if (this.queue.length > 0) {
         if (this.queue.length === 1) {
             let val = this.queue[0];
@@ -53,10 +52,11 @@ FrontMiddleBackQueue.prototype.popMiddle = function() {
             return val;
         }
         let middleIdx = Math.floor((this.queue.length-1)/2);
-        let val = this.queue[middleIdx];
-        let tmpArr = this.queue.slice(0, middleIdx);
-        this.queue = tmpArr.concat(this.queue.slice(middleIdx+1));
-        return val;
+        // let val = this.queue[middleIdx];
+        // let tmpArr = this.queue.slice(0, middleIdx);
+        // this.queue = tmpArr.concat(this.queue.slice(middleIdx+1));
+        // return val;
+        return this.queue.splice(middleIdx, 1);
     } else {
         return -1;
     }
@@ -66,7 +66,6 @@ FrontMiddleBackQueue.prototype.popMiddle = function() {
  * @return {number}
  */
 FrontMiddleBackQueue.prototype.popBack = function() {
-    console.log(this.queue)
     if (this.queue.length > 0) {
         return this.queue.pop();
     } else {
