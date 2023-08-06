@@ -5,7 +5,6 @@
  */
 var ParkingSystem = function(big, medium, small) {
     this.lims = [big,medium,small];
-    this.cars = [0,0,0];
 };
 
 /** 
@@ -13,8 +12,8 @@ var ParkingSystem = function(big, medium, small) {
  * @return {boolean}
  */
 ParkingSystem.prototype.addCar = function(carType) {
-    if (this.cars[carType - 1] < this.lims[carType - 1]) {
-        this.cars[carType - 1] += 1;
+    if (this.lims[carType - 1]) {
+        this.lims[carType - 1] -= 1;
         return true;
     } else {
         return false;
