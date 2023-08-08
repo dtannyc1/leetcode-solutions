@@ -3,17 +3,18 @@
  * @return {boolean}
  */
 var isGood = function(nums) {
-    let count = new Array(nums.length - 1).fill(0);
-    for (let ii = 0; ii < nums.length; ii++){
-        if (!count[nums[ii]]) {
-            if (nums[ii] <= nums.length - 1 && nums[ii] > 0) {
-                count[nums[ii]] = 1;
+    let n = nums.length - 1;
+    let count = new Array(n).fill(0);
+    for (let num of nums){
+        if (!count[num]) {
+            if (num <= n && num > 0) {
+                count[num] = 1;
             } else {
                 return false;
             }
         } else {
-            if (nums[ii] === nums.length - 1 && count[nums[ii]] === 1){
-                count[nums[ii]] += 1;
+            if (num === n && count[num] === 1){
+                count[num] += 1;
             } else {
                 return false;
             }
