@@ -12,7 +12,7 @@ var validPartition = function(nums) {
     let toCheck2 = [2];
     let toCheck3 = [3];
     while (toCheck2.length || toCheck3.length){
-        if (toCheck2.length){
+        while (toCheck2.length){
             let ind = toCheck2.shift();
             if (nums[ind-1] === nums[ind-2]) {
                 if (ind === nums.length) return true;
@@ -27,7 +27,7 @@ var validPartition = function(nums) {
                 }
             }
         }
-        if (toCheck3.length){
+        while (toCheck3.length){
             let ind = toCheck3.shift();
             if (nums[ind-1] === nums[ind-2] && nums[ind-3] === nums[ind-2]) {
                 if (ind === nums.length) return true;
