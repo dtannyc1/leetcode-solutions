@@ -11,13 +11,15 @@ var maxSubArray = function(nums) {
         // if > curMax, set curMax = curSum
         // if curSum < 0, set it to 0
     // return curMax
-    // [-1, -2]
-    let curMax = nums[0]; // curMax: -1
-    let curSum = nums[0]; // curSum: 0
-    if (curSum < 0) curSum = 0;
+    
+    // let curMax = nums[0]; // curMax: -1
+    // let curSum = nums[0]; // curSum: 0
+    // if (curSum < 0) curSum = 0;
+    let curMax = -Infinity; // curMax: -1
+    let curSum = 0; // curSum: 0
 
-    for (let ii = 1; ii < nums.length; ii++){
-        curSum += nums[ii];
+    for (let num of nums){
+        curSum += num;
         if (curSum > curMax) curMax = curSum;
         if (curSum < 0) curSum = 0;
     }
