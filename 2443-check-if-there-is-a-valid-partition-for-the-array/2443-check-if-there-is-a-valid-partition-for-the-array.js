@@ -12,8 +12,8 @@ var validPartition = function(nums) {
     let toCheck2 = [2];
     let toCheck3 = [3];
     while (toCheck2.length || toCheck3.length){
-        while (toCheck2.length){
-            let ind = toCheck2.shift();
+        if (toCheck2.length){
+            let ind = toCheck2.pop();
             if (nums[ind-1] === nums[ind-2]) {
                 if (ind === nums.length) return true;
                 else {
@@ -27,8 +27,8 @@ var validPartition = function(nums) {
                 }
             }
         }
-        while (toCheck3.length){
-            let ind = toCheck3.shift();
+        if (toCheck3.length){
+            let ind = toCheck3.pop();
             if (nums[ind-1] === nums[ind-2] && nums[ind-3] === nums[ind-2]) {
                 if (ind === nums.length) return true;
                 else {
