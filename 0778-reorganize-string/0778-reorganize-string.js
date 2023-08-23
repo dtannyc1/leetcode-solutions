@@ -32,6 +32,15 @@ var reorganizeString = function(s) {
             charHash[keys[0]] -= 1;
             if (charHash[keys[0]] === 0) {
                 delete charHash[keys[0]];
+                keys.splice(0,1);
+            } else{ 
+                let ii = 0;
+                while (keys.length > ii+1 && charHash[keys[ii]] < charHash[keys[ii+1]]) {
+                    let tmp = keys[ii];
+                    keys[ii] = keys[ii+1];
+                    keys[ii+1] = tmp;
+                    ii++;
+                }
             }
         } else {
             if (keys.length === 1) {
@@ -39,23 +48,27 @@ var reorganizeString = function(s) {
                 return "";
             }
             output += keys[1];
-            output += keys[0];
-            lastAdded = keys[0];
+            lastAdded = keys[1];
             charHash[keys[1]] -= 1;
-            charHash[keys[0]] -= 1;
-            if (charHash[keys[0]] === 0) {
-                delete charHash[keys[0]];
-            }
             if (charHash[keys[1]] === 0) {
                 delete charHash[keys[1]];
+                keys.splice(1,1);
+            } else {
+                let ii = 1;
+                while (keys.length > ii+1 && charHash[keys[ii]] < charHash[keys[ii+1]]) {
+                    let tmp = keys[ii];
+                    keys[ii] = keys[ii+1];
+                    keys[ii+1] = tmp;
+                    ii++;
+                }
             }
         }
-        // slow resorting every single iteration
-        keys = Object.keys(charHash).sort((a,b) => {
-            if (charHash[a] > charHash[b]) return -1;
-            if (charHash[b] > charHash[a]) return 1;
-            else return 0;
-        });
+        // // slow resorting every single iteration
+        // keys = Object.keys(charHash).sort((a,b) => {
+        //     if (charHash[a] > charHash[b]) return -1;
+        //     if (charHash[b] > charHash[a]) return 1;
+        //     else return 0;
+        // });
     }
     return output;
 };
