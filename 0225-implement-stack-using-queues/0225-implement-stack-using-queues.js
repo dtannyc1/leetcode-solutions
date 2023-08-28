@@ -27,10 +27,8 @@ MyStack.prototype.pop = function() {
             }
             let el = this.queue1.shift();
 
-            // preserve order
-            while (this.queue2.length != 0) {
-                this.queue1.push(this.queue2.shift());
-            }
+            this.queue1 = this.queue2;
+            this.queue2 = [];
             return el;
         }
     }
@@ -46,10 +44,8 @@ MyStack.prototype.top = function() {
     let el = this.queue1[0];
     this.queue2.push(this.queue1.shift());
 
-    // preserve order
-    while (this.queue2.length != 0) {
-        this.queue1.push(this.queue2.shift());
-    }
+    this.queue1 = this.queue2;
+    this.queue2 = [];
     return el;
 };
 
