@@ -16,7 +16,7 @@ var countBits = function(n) {
     //         ind = 0;
     //         list = list.concat(list.map(val => val+1));
     //     }
-    // }
+    // } 
 
     let sol = [0,1];
     let list = [1,2];
