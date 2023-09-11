@@ -7,14 +7,15 @@ var groupThePeople = function(groupSizes) {
     let dict = ({});
 
     for (let ii = 0; ii < groupSizes.length; ii++){
-        if (dict[groupSizes[ii]]){
-            dict[groupSizes[ii]].push(ii);
+        let ind = groupSizes[ii];
+        if (dict[ind]){
+            dict[ind].push(ii);
         } else {
-            dict[groupSizes[ii]] = [ii];
+            dict[ind] = [ii];
         }
-        if (dict[groupSizes[ii]] && dict[groupSizes[ii]].length === groupSizes[ii]) {
-            output.push(dict[groupSizes[ii]]);
-            dict[groupSizes[ii]] = [];
+        if (dict[ind].length === ind) {
+            output.push(dict[ind]);
+            dict[ind] = [];
         }
     }
 
