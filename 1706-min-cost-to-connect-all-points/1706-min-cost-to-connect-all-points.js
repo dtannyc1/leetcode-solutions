@@ -39,7 +39,7 @@ var minCostConnectPoints = function(points) {
         dists[ii].sort(sorterFunc);
     }
 
-    console.log(dists);
+    // console.log(dists);
     
     let tree = ['0'];
     let totalDist = 0;
