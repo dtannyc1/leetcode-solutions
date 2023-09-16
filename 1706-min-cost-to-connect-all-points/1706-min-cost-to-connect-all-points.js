@@ -49,12 +49,14 @@ var minCostConnectPoints = function(points) {
         let minInd = -1;
         
         for (let node of tree){
-            while (tree.includes(dists[node][dists[node].length-1][0].toString())){
+            let len = dists[node].length;
+            while (tree.includes(dists[node][len-1][0].toString())){
                 dists[node].pop();
+                len--;
             }
-            if (dists[node][dists[node].length-1][1] < minDist){
-                minDist = dists[node][dists[node].length-1][1];
-                minInd = dists[node][dists[node].length-1][0];
+            if (dists[node][len-1][1] < minDist){
+                minDist = dists[node][len-1][1];
+                minInd = dists[node][len-1][0];
             }
         }
 
