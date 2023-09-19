@@ -3,7 +3,7 @@
  * @return {number}
  */
 var findDuplicate = function(nums) {
-    let data = new Array(nums.length).fill(0);
+    let data = new Array(nums.length).fill(false);
 
     for (let num of nums){
         if (data[num]) return num;
