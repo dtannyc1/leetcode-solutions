@@ -1,7 +1,6 @@
 
 var MyHashMap = function() {
-    this.keys = [];
-    this.vals = [];
+    this.hashMap = [];
 };
 
 /** 
@@ -10,14 +9,7 @@ var MyHashMap = function() {
  * @return {void}
  */
 MyHashMap.prototype.put = function(key, value) {
-    if (this.keys.indexOf(key) === -1){
-        this.keys.push(key);
-        this.vals.push(value);
-        return null;
-    } else {
-        this.vals[this.keys.indexOf(key)] = value;
-        return null;
-    }
+    this.hashMap[key] = [key, value];
 };
 
 /** 
@@ -25,11 +17,7 @@ MyHashMap.prototype.put = function(key, value) {
  * @return {number}
  */
 MyHashMap.prototype.get = function(key) {
-    if (this.keys.indexOf(key) === -1){
-        return -1;
-    } else {
-        return this.vals[this.keys.indexOf(key)];
-    }
+    return this.hashMap[key] ? this.hashMap[key][1] : -1;
 };
 
 /** 
@@ -37,12 +25,7 @@ MyHashMap.prototype.get = function(key) {
  * @return {void}
  */
 MyHashMap.prototype.remove = function(key) {
-    if (this.keys.indexOf(key) === -1){
-        return null;
-    } else {
-        this.vals.splice(this.keys.indexOf(key),1);
-        this.keys.splice(this.keys.indexOf(key),1);
-    }
+    delete this.hashMap[key];
 };
 
 /** 
