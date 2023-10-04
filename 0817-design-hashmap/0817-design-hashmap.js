@@ -1,6 +1,6 @@
 
 var MyHashMap = function() {
-    this.hashMap = [];
+    this.hashMap = ({});
 };
 
 /** 
