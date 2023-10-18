@@ -23,17 +23,20 @@ var minimumTime = function(n, relations, time) {
             courseMap[next] = {prevCourses: [prev]};
         }
     }
+
     let getUpdatedTime = function(ii){
         if (!courseMap[ii]){
             return totalTime[ii-1];
         } else if (courseMap[ii].updated){
             return totalTime[ii-1];
         } else {
-            let times = courseMap[ii].prevCourses.map((jj) => {
-                return getUpdatedTime(jj);
-            });
             let sum = time[ii-1];
-            sum += Math.max(...times);
+            let maxTimePrev = 0;
+            for (let prevCourse of courseMap[ii].prevCourses){
+                let tmpTime = getUpdatedTime(prevCourse);
+                maxTimePrev = Math.max(maxTimePrev, tmpTime);
+            }
+            sum += maxTimePrev;
             totalTime[ii-1] = sum;
             courseMap[ii].updated = true;
             return sum;
