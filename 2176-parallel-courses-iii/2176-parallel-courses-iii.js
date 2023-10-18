@@ -14,7 +14,7 @@ var minimumTime = function(n, relations, time) {
     // make a dict of {nextcourse: {prevCourses: [], totalTime: null}}}
     // use map to calculate [totalTime]
 
-    let totalTime = time.slice();
+    let totalTime = new Array(n);
     let courseMap = ({});
     for (let [prev, next] of relations){
         if (courseMap[next]){
@@ -26,8 +26,9 @@ var minimumTime = function(n, relations, time) {
 
     let getUpdatedTime = function(ii){
         if (!courseMap[ii]){
+            totalTime[ii-1] ||= time[ii-1];
             return totalTime[ii-1];
-        } else if (courseMap[ii].updated){
+        } else if (totalTime[ii-1]){
             return totalTime[ii-1];
         } else {
             let sum = time[ii-1];
@@ -38,7 +39,6 @@ var minimumTime = function(n, relations, time) {
             }
             sum += maxTimePrev;
             totalTime[ii-1] = sum;
-            courseMap[ii].updated = true;
             return sum;
         }
     }
