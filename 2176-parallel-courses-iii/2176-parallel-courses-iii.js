@@ -39,8 +39,11 @@ var minimumTime = function(n, relations, time) {
             return sum;
         }
     }
-    for (let [nextCourse, prevCourseObj] of Object.entries(courseMap)){
-        getUpdatedTime(nextCourse);
+
+    let maxTime = -Infinity;
+    for (let ii = 1; ii <= n; ii++){
+        let tmpTime = getUpdatedTime(ii);
+        maxTime = Math.max(maxTime, tmpTime);
     }
-    return Math.max(...totalTime)
+    return maxTime;
 };
