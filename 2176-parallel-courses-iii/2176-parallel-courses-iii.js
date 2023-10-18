@@ -31,15 +31,13 @@ var minimumTime = function(n, relations, time) {
         } else if (totalTime[ii-1]){
             return totalTime[ii-1];
         } else {
-            let sum = time[ii-1];
             let maxTimePrev = 0;
             for (let prevCourse of courseMap[ii].prevCourses){
                 let tmpTime = getUpdatedTime(prevCourse);
                 maxTimePrev = Math.max(maxTimePrev, tmpTime);
             }
-            sum += maxTimePrev;
-            totalTime[ii-1] = sum;
-            return sum;
+            totalTime[ii-1] = time[ii-1] + maxTimePrev;
+            return totalTime[ii-1];
         }
     }
 
