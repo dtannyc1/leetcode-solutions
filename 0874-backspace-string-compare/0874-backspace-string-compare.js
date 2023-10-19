@@ -22,8 +22,8 @@ var backspaceCompare = function(s, t) {
     // }
     // return outS.join("") === outT.join("");
 
-    // go backwards through the strings to determine the last character
-    let nextChar = function(str, curIdx){
+    // go backwards through the strings to determine the index of the last character
+    let nextIdx = function(str, curIdx){
         while (curIdx >= 0 && str.charAt(curIdx) === '#'){
             let cnt = 1;
             curIdx--;
@@ -39,14 +39,17 @@ var backspaceCompare = function(s, t) {
         return curIdx;
     };
 
-    let ii = nextChar(s, s.length-1);
-    let jj = nextChar(t, t.length-1);
+    let ii = nextIdx(s, s.length-1);
+    let jj = nextIdx(t, t.length-1);
 
+    // iterate through and check if characters match
     while (ii >= 0 && jj >= 0){
         if (s.charAt(ii) != t.charAt(jj)) return false;
-        ii = nextChar(s, ii-1);
-        jj = nextChar(t, jj-1);
+        ii = nextIdx(s, ii-1);
+        jj = nextIdx(t, jj-1);
     }
 
+    // if we find all matching characters
+    // also make sure we processed the entirety of both strings
     return ii < 0 && jj < 0;
 };
