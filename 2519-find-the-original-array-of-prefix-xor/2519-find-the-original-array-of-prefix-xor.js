@@ -3,9 +3,9 @@
  * @return {number[]}
  */
 var findArray = function(pref) {
-    let output = pref.slice();
-    for (let ii = 1; ii < output.length; ii++){
-        output[ii] = pref[ii-1] ^ output[ii];
+    let output = [pref[0]];
+    for (let ii = 1; ii < pref.length; ii++){
+        output.push(pref[ii-1] ^ pref[ii]);
     }
     return output
 };
